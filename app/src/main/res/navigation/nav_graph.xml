@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashGifyFragment">
+
+    <fragment
+        android:id="@+id/splashGifyFragment"
+        android:name="com.azimuton.funnygify.fragments.SplashGifyFragment"
+        android:label="fragment_splash_gify"
+        tools:layout="@layout/fragment_splash_gify" >
+        <action
+            android:id="@+id/action_splashGifyFragment_to_listGifyFragment2"
+            app:destination="@id/listGifyFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/bigGifyFragment"
+        android:name="com.azimuton.funnygify.fragments.BigGifyFragment"
+        android:label="fragment_big_gify"
+        tools:layout="@layout/fragment_big_gify" >
+        <action
+            android:id="@+id/action_bigGifyFragment_to_listGifyFragment2"
+            app:destination="@id/listGifyFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/listGifyFragment2"
+        android:name="com.azimuton.funnygify.fragments.ListGifyFragment"
+        android:label="fragment_list_gify"
+        tools:layout="@layout/fragment_list_gify" >
+        <action
+            android:id="@+id/action_listGifyFragment2_to_bigGifyFragment"
+            app:destination="@id/bigGifyFragment" />
+    </fragment>
+</navigation>
