@@ -1,5 +1,6 @@
 package com.azimuton.data.api
 
+import com.azimuton.data.models.Data
 import com.azimuton.data.models.Gify
 import retrofit2.Call
 import retrofit2.http.GET
