@@ -1,13 +1,11 @@
 package com.azimuton.funnygify.fragments
 
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
+import androidx.fragment.app.Fragment
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_splash_gify.*
@@ -34,7 +32,7 @@ class SplashGifyFragment : Fragment(), CoroutineScope {
 
         Glide.with(requireContext())
             .asGif()
-            .load(R.drawable.tumblr)
+            .load(R.drawable.smile)
             .into(ivSplash);
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -44,22 +42,8 @@ class SplashGifyFragment : Fragment(), CoroutineScope {
             delay(3100)
             activity?.supportFragmentManager
                 ?.beginTransaction()
-                ?.replace(R.id.flMain, ListGifyFragment())
+                ?.replace(R.id.fragmentContainerView, ListGifyFragment())
                 ?.commit()
-            //NavController(requireContext()).graph.startDestination
-//            startActivity(Intent(this@SplashGifyFragment, MainActivity :: class.java))
-//            overridePendingTransition(0, R.anim.open_activity)
-//            finish()
         }
-//        async {
-//            delay(3100)
-//            go()
-//        }
     }
-//    fun go(){
-//        activity?.supportFragmentManager
-//            ?.beginTransaction()
-//            ?.replace(R.layout.fl, ListGifyFragment())
-//            ?.commit()
-//    }
 }

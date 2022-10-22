@@ -6,15 +6,6 @@
     app:startDestination="@id/splashGifyFragment">
 
     <fragment
-        android:id="@+id/splashGifyFragment"
-        android:name="com.azimuton.funnygify.fragments.SplashGifyFragment"
-        android:label="fragment_splash_gify"
-        tools:layout="@layout/fragment_splash_gify" >
-        <action
-            android:id="@+id/action_splashGifyFragment_to_listGifyFragment2"
-            app:destination="@id/listGifyFragment2" />
-    </fragment>
-    <fragment
         android:id="@+id/bigGifyFragment"
         android:name="com.azimuton.funnygify.fragments.BigGifyFragment"
         android:label="fragment_big_gify"
@@ -31,5 +22,14 @@
         <action
             android:id="@+id/action_listGifyFragment2_to_bigGifyFragment"
             app:destination="@id/bigGifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashGifyFragment"
+        android:name="com.azimuton.funnygify.fragments.SplashGifyFragment"
+        android:label="fragment_splash_gify"
+        tools:layout="@layout/fragment_splash_gify" >
+        <action
+            android:id="@+id/action_splashGifyFragment_to_listGifyFragment2"
+            app:destination="@id/listGifyFragment2" />
     </fragment>
 </navigation>

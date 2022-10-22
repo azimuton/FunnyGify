@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azimuton.data.api.API
 import com.azimuton.data.api.RetrofitClient
@@ -19,6 +18,7 @@ import retrofit2.Response
 
 class ListGifyFragment : Fragment() {
     lateinit var gifyList: ArrayList<Gify>
+    //lateinit var dataList: ArrayList<Data>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,15 +32,26 @@ class ListGifyFragment : Fragment() {
         val retrofit = RetrofitClient()
             .getClient("https://api.giphy.com/")
             .create(API::class.java)
-        retrofit.getRandomIdea().enqueue(object : Callback<Gify> {
+        retrofit.getGifs().enqueue(object : Callback<Gify>, ListGifyAdapter.ItemClickListener {
             override fun onResponse(call: Call<Gify>, response: Response<Gify>) {
                 gifyList = ArrayList<Gify>()
-                val adapter = ListGifyAdapter(requireContext(), response.body()?.data)
+                val adapter = ListGifyAdapter(requireContext(), response.body()?.data, this)
                 rvListGify.layoutManager = LinearLayoutManager(context)
                 rvListGify.adapter = adapter
             }
             override fun onFailure(call: Call<Gify>, t: Throwable) {
 
+            }
+
+            override fun onItemClick(adapterPosition: Int) {
+                //MAIN.navController.navigate(R.id.action_listGifyFragment2_to_bigGifyFragment)
+//                dataList = ArrayList<Data>()
+                activity?.supportFragmentManager
+                    ?.beginTransaction()
+                    ?.replace(R.id.fragmentContainerView, BigGifyFragment())
+                    ?.commit()
+//               val result = dataList[adapterPosition].id
+//                activity?.supportFragmentManager?.setFragmentResult("id", bundleOf("data" to result))
             }
         })
     }

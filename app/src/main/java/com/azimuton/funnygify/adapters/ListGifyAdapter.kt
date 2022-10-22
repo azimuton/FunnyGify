@@ -8,17 +8,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.azimuton.data.models.Data
-import com.azimuton.data.models.Gify
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class ListGifyAdapter(val contextA: Context, val listGify: List<Data>?)
+class ListGifyAdapter(val contextA: Context, val listGify: List<Data>?, val mItemClickListener: ItemClickListener)
     : RecyclerView.Adapter<ListGifyAdapter.ViewHolder>() {
-    class ViewHolder(itemView : View, contextV: Context)  : RecyclerView.ViewHolder(itemView) {
-        fun bind(listItem: Gify) {
-            itemView.setOnClickListener {
+   inner class ViewHolder(itemView : View, contextV: Context)  : RecyclerView.ViewHolder(itemView) {
 
+        init {
+            itemView.setOnClickListener {
+                mItemClickListener.onItemClick(adapterPosition)
             }
         }
 
@@ -47,10 +47,16 @@ class ListGifyAdapter(val contextA: Context, val listGify: List<Data>?)
             .load(listGify?.get(position)?.images?.original?.url)
             .into(holder.image!!)
         holder.title?.text = listItem?.title
+
+
     }
 
     override fun getItemCount(): Int {
        return listGify!!.size
+    }
+
+    interface  ItemClickListener{
+        fun onItemClick(position: Int)
     }
 
 }
