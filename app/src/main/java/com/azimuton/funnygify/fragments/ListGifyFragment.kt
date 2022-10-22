@@ -9,15 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.azimuton.data.api.API
 import com.azimuton.data.api.RetrofitClient
 import com.azimuton.data.models.GifyEntity
+import com.azimuton.domain.model.Gify
 import com.azimuton.funnygify.R
 import com.azimuton.funnygify.adapters.ListGifyAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list_gify.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+@AndroidEntryPoint
 class ListGifyFragment : Fragment() {
-    lateinit var gifyEntityList: ArrayList<GifyEntity>
+    lateinit var gifyEntityList: ArrayList<Gify>
     //lateinit var dataList: ArrayList<DataEntity>
 
     override fun onCreateView(
@@ -32,14 +34,14 @@ class ListGifyFragment : Fragment() {
         val retrofit = RetrofitClient()
             .getClient("https://api.giphy.com/")
             .create(API::class.java)
-        retrofit.getGifs().enqueue(object : Callback<GifyEntity>, ListGifyAdapter.ItemClickListener {
-            override fun onResponse(call: Call<GifyEntity>, response: Response<GifyEntity>) {
-                gifyEntityList = ArrayList<GifyEntity>()
-                val adapter = ListGifyAdapter(requireContext(), response.body()?.data, this)
+        retrofit.getGifs().enqueue(object : Callback<Gify>, ListGifyAdapter.ItemClickListener {
+            override fun onResponse(call: Call<Gify>, response: Response<Gify>) {
+                gifyEntityList = ArrayList<Gify>()
+                val adapter = ListGifyAdapter(requireContext(), response.body()!!.data, this)
                 rvListGify.layoutManager = LinearLayoutManager(context)
                 rvListGify.adapter = adapter
             }
-            override fun onFailure(call: Call<GifyEntity>, t: Throwable) {
+            override fun onFailure(call: Call<Gify>, t: Throwable) {
 
             }
 

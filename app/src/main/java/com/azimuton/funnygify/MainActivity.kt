@@ -5,7 +5,9 @@ import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.azimuton.funnygify.fragments.SplashGifyFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     //lateinit var navController : NavController
 

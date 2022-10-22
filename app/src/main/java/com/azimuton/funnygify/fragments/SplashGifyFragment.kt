@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_splash_gify.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-
+@AndroidEntryPoint
 class SplashGifyFragment : Fragment(), CoroutineScope {
 
     private val job = Job()

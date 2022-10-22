@@ -8,9 +8,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_big_gify.*
 
-
+@AndroidEntryPoint
 class BigGifyFragment : Fragment() {
 
     //lateinit var gifyEntityList: ArrayList<DataEntity>
