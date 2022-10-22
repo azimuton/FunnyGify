@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.azimuton.data.models.Data
+import com.azimuton.data.models.DataEntity
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class ListGifyAdapter(val contextA: Context, val listGify: List<Data>?, val mItemClickListener: ItemClickListener)
+class ListGifyAdapter(val contextA: Context, val listGify: List<DataEntity>?, val mItemClickListener: ItemClickListener)
     : RecyclerView.Adapter<ListGifyAdapter.ViewHolder>() {
    inner class ViewHolder(itemView : View, contextV: Context)  : RecyclerView.ViewHolder(itemView) {
 

@@ -1,6 +1,10 @@
-package com.azimuton.data.models
+package com.azimuton.domain.model
 
-data class Data(
+import com.azimuton.data.models.Analytics
+import com.azimuton.data.models.Images
+import com.azimuton.data.models.User
+
+class Data (
     val analytics: Analytics,
     val analytics_response_payload: String,
     val bitly_gif_url: String,
@@ -22,4 +26,4 @@ data class Data(
     val url: String,
     val user: User,
     val username: String
-)
+        )

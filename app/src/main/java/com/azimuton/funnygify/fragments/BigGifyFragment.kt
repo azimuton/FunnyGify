@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_big_gify.*
 
 class BigGifyFragment : Fragment() {
 
-    //lateinit var gifyList: ArrayList<Data>
+    //lateinit var gifyEntityList: ArrayList<DataEntity>
     //lateinit var result : String
 
 

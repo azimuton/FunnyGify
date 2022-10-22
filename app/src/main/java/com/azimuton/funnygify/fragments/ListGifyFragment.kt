@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azimuton.data.api.API
 import com.azimuton.data.api.RetrofitClient
-import com.azimuton.data.models.Gify
+import com.azimuton.data.models.GifyEntity
 import com.azimuton.funnygify.R
 import com.azimuton.funnygify.adapters.ListGifyAdapter
 import kotlinx.android.synthetic.main.fragment_list_gify.*
@@ -17,8 +17,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ListGifyFragment : Fragment() {
-    lateinit var gifyList: ArrayList<Gify>
-    //lateinit var dataList: ArrayList<Data>
+    lateinit var gifyEntityList: ArrayList<GifyEntity>
+    //lateinit var dataList: ArrayList<DataEntity>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,20 +32,20 @@ class ListGifyFragment : Fragment() {
         val retrofit = RetrofitClient()
             .getClient("https://api.giphy.com/")
             .create(API::class.java)
-        retrofit.getGifs().enqueue(object : Callback<Gify>, ListGifyAdapter.ItemClickListener {
-            override fun onResponse(call: Call<Gify>, response: Response<Gify>) {
-                gifyList = ArrayList<Gify>()
+        retrofit.getGifs().enqueue(object : Callback<GifyEntity>, ListGifyAdapter.ItemClickListener {
+            override fun onResponse(call: Call<GifyEntity>, response: Response<GifyEntity>) {
+                gifyEntityList = ArrayList<GifyEntity>()
                 val adapter = ListGifyAdapter(requireContext(), response.body()?.data, this)
                 rvListGify.layoutManager = LinearLayoutManager(context)
                 rvListGify.adapter = adapter
             }
-            override fun onFailure(call: Call<Gify>, t: Throwable) {
+            override fun onFailure(call: Call<GifyEntity>, t: Throwable) {
 
             }
 
             override fun onItemClick(adapterPosition: Int) {
                 //MAIN.navController.navigate(R.id.action_listGifyFragment2_to_bigGifyFragment)
-//                dataList = ArrayList<Data>()
+//                dataList = ArrayList<DataEntity>()
                 activity?.supportFragmentManager
                     ?.beginTransaction()
                     ?.replace(R.id.fragmentContainerView, BigGifyFragment())
