@@ -3,5 +3,5 @@ package com.azimuton.domain.repository
 import com.azimuton.domain.model.Data
 
 interface GifRepository {
-    fun getGifs() : List<Data>
+    suspend fun getGifs() : List<Data>
 }

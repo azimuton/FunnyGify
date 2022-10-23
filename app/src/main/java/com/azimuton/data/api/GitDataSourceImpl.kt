@@ -18,7 +18,7 @@ class GitDataSourceImpl( private val api : API) : GifDataSource {
 //        })
 //        return listOf()
 //    }
-    override fun getGifTrends(): List<DataEntity> {
+    override suspend fun getGifTrends(): List<DataEntity> {
         TODO("Not yet implemented")
     }
 }

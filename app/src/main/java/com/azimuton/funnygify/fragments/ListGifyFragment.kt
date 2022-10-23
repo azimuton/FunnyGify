@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azimuton.data.api.API
 import com.azimuton.data.api.RetrofitClient
+import com.azimuton.data.models.DataEntity
 import com.azimuton.data.models.GifyEntity
+import com.azimuton.domain.model.Data
 import com.azimuton.domain.model.Gify
 import com.azimuton.funnygify.R
 import com.azimuton.funnygify.adapters.ListGifyAdapter
@@ -20,7 +23,8 @@ import retrofit2.Response
 @AndroidEntryPoint
 class ListGifyFragment : Fragment() {
     lateinit var gifyEntityList: ArrayList<Gify>
-    //lateinit var dataList: ArrayList<DataEntity>
+    //lateinit var dataList : ArrayList<Data>
+    //lateinit var result : List<DataEntity>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,14 +49,13 @@ class ListGifyFragment : Fragment() {
 
             }
 
-            override fun onItemClick(adapterPosition: Int) {
+            override fun onItemClick(position: Int) {
                 //MAIN.navController.navigate(R.id.action_listGifyFragment2_to_bigGifyFragment)
-//                dataList = ArrayList<DataEntity>()
                 activity?.supportFragmentManager
                     ?.beginTransaction()
                     ?.replace(R.id.fragmentContainerView, BigGifyFragment())
                     ?.commit()
-//               val result = dataList[adapterPosition].id
+//               val result = gifyEntityList.toList()
 //                activity?.supportFragmentManager?.setFragmentResult("id", bundleOf("data" to result))
             }
         })

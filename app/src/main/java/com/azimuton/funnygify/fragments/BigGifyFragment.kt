@@ -14,10 +14,6 @@ import kotlinx.android.synthetic.main.fragment_big_gify.*
 @AndroidEntryPoint
 class BigGifyFragment : Fragment() {
 
-    //lateinit var gifyEntityList: ArrayList<DataEntity>
-    //lateinit var result : String
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +30,6 @@ class BigGifyFragment : Fragment() {
             .into(ivBackBigGif)
 
         ivBackBigGif.setOnClickListener {
-           // val controller = findNavController()
             //MAIN.navController.navigate(R.id.action_bigGifyFragment_to_listGifyFragment2)
             activity?.supportFragmentManager
                 ?.beginTransaction()
@@ -43,10 +38,10 @@ class BigGifyFragment : Fragment() {
         }
 
 //        activity?.supportFragmentManager?.setFragmentResultListener("id", requireActivity()) { key, bundle ->
-//            // Здесь можно передать любой тип, поддерживаемый Bundle-ом
-//             result = bundle.getString("data").toString()
+//              result = listOf(bundle.getStringArrayList(key).toString())
 //        }
-//        Log.d("tt", result)
+//        tvBigGif.text = result.toList().toString()
+
 
             val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

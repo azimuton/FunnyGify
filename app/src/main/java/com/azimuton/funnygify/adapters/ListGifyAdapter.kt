@@ -8,12 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.azimuton.data.models.DataEntity
-import com.azimuton.domain.model.Data
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class ListGifyAdapter(val contextA: Context, val listGify: List<DataEntity>, val mItemClickListener: ItemClickListener)
+class ListGifyAdapter(private val contextA: Context, private val listGify: List<DataEntity>,
+                      val mItemClickListener: ItemClickListener)
     : RecyclerView.Adapter<ListGifyAdapter.ViewHolder>() {
    inner class ViewHolder(itemView : View, contextV: Context)  : RecyclerView.ViewHolder(itemView) {
 
@@ -39,21 +39,21 @@ class ListGifyAdapter(val contextA: Context, val listGify: List<DataEntity>, val
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = listGify?.get(position)
+        val listItem = listGify.get(position)
 //        Picasso.with(contextA)
 //            .load(listGify?.get(position)?.images?.original?.url)
 //            .into(holder.image)
         Glide.with(contextA)
             .asGif()
-            .load(listGify?.get(position)?.images?.original?.url)
+            .load(listGify[position].images.original.url)
             .into(holder.image!!)
-        holder.title?.text = listItem?.title
+        holder.title?.text = listItem.title
 
 
     }
 
     override fun getItemCount(): Int {
-       return listGify!!.size
+       return listGify.size
     }
 
     interface  ItemClickListener{

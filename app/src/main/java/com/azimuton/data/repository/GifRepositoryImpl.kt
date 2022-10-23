@@ -6,7 +6,7 @@ import com.azimuton.domain.model.Data
 import com.azimuton.domain.repository.GifRepository
 
 class GifRepositoryImpl(private val gifStorage : GifDataSource) : GifRepository {
-    override fun getGifs(): List<Data> {
+    override suspend fun getGifs(): List<Data> {
         return ListDataMapper().mapFromEntity(gifStorage.getGifTrends())
     }
 }
