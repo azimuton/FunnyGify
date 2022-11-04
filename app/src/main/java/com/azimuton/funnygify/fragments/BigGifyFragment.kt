@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.azimuton.funnygify.R
 import com.bumptech.glide.Glide
@@ -13,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_big_gify.*
 
 @AndroidEntryPoint
 class BigGifyFragment : Fragment() {
+//     var result : String? = null
+//     var text : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,22 +40,27 @@ class BigGifyFragment : Fragment() {
                 ?.commit()
         }
 
-//        activity?.supportFragmentManager?.setFragmentResultListener("id", requireActivity()) { key, bundle ->
-//              result = listOf(bundle.getStringArrayList(key).toString())
-//        }
-//        tvBigGif.text = result.toList().toString()
+//        activity?.supportFragmentManager?.setFragmentResultListener(
+//            "id", requireActivity()) { key, bundle ->
+//             result = bundle.getString(key).toString() }
+//        activity?.supportFragmentManager?.setFragmentResultListener(
+//            "id", requireActivity()) { key, bundle ->
+//            text = bundle.getString(key).toString() }
+//        ivBigGif.setImageURI(result?.toUri())
+//        tvBigGif.text = text
 
 
             val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                activity?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.replace(R.id.fragmentContainerView, ListGifyFragment())
-                    ?.commit()
+                override fun handleOnBackPressed() {
+                    activity?.supportFragmentManager
+                        ?.beginTransaction()
+                        ?.replace(R.id.fragmentContainerView, ListGifyFragment())
+                        ?.commit()
+                }
             }
+            activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callback)
         }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callback)
     }
-    }
+
 
 

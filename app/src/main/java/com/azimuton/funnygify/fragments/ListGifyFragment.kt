@@ -58,6 +58,13 @@ class ListGifyFragment : Fragment() {
 //               val result = gifyEntityList.toList()
 //                activity?.supportFragmentManager?.setFragmentResult("id", bundleOf("data" to result))
             }
+
+            override fun details(index: Int, listGify: List<DataEntity>) {
+//                val res = listGify[index].images
+//                val text = listGify[index].title
+//                activity?.supportFragmentManager?.setFragmentResult("id", bundleOf("data" to res))
+//                activity?.supportFragmentManager?.setFragmentResult("id", bundleOf("data" to text))
+            }
         })
     }
 }

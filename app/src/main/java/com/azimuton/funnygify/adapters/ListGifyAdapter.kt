@@ -21,6 +21,10 @@ class ListGifyAdapter(private val contextA: Context, private val listGify: List<
             itemView.setOnClickListener {
                 mItemClickListener.onItemClick(adapterPosition)
             }
+
+//            interface ShowDetails {
+//                fun details(index: Int, listGify: List<DataEntity>)
+//            }
         }
 
         val context = contextV
@@ -39,7 +43,7 @@ class ListGifyAdapter(private val contextA: Context, private val listGify: List<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = listGify.get(position)
+        val listItem = listGify[position]
 //        Picasso.with(contextA)
 //            .load(listGify?.get(position)?.images?.original?.url)
 //            .into(holder.image)
@@ -58,6 +62,7 @@ class ListGifyAdapter(private val contextA: Context, private val listGify: List<
 
     interface  ItemClickListener{
         fun onItemClick(position: Int)
+        fun details(index: Int, listGify: List<DataEntity>)
     }
 
 }
